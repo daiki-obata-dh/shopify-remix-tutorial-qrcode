@@ -219,6 +219,20 @@ export default function QRCodeForm() {
                 </InlineStack>
               </BlockStack>
             </Card>
+            <Card>
+              <BlockStack gap="500">
+                <InlineStack align="space-between">
+                  <Text as={"h2"} variant="headingLg">
+                    Mock API Response
+                  </Text>
+                </InlineStack>
+                <InlineStack align="space-between">
+                  <Text as="span" variant="headingMd" fontWeight="normal">
+                    {qrCode.additionalKey}
+                  </Text>
+                </InlineStack>
+              </BlockStack>
+            </Card>
           </BlockStack>
         </Layout.Section>
         <Layout.Section variant="oneThird">

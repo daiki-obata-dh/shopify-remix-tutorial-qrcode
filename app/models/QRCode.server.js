@@ -83,7 +83,7 @@ async function supplementQRCode(qrCode, graphql) {
     productAlt: product?.images?.nodes[0]?.altText,
     destinationUrl: getDestinationUrl(qrCode),
     image: await qrCodeImagePromise,
-    additional_key: externalApiResponseAsStr,
+    additionalKey: externalApiResponseAsStr,
   };
 }
 
@@ -119,7 +119,7 @@ async function getExternalData() {
   const response = await axios.get("https://httpbin.org/get", {
     params: {
       key: "value",
-      storeCmsApiToken: storeCmsApiToken,
+      storeCmsApiTokenFromEnv: storeCmsApiToken,
     }
   });
   console.log("-> response.data=", response.data)

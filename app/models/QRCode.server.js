@@ -1,6 +1,7 @@
 import qrcode from "qrcode";
 import invariant from "tiny-invariant";
 import db from "../db.server";
+import axios from "axios";
 
 export async function getQRCode(id, graphql) {
   const qrCode = await db.qRCode.findFirst({ where: { id } });
@@ -69,6 +70,11 @@ async function supplementQRCode(qrCode, graphql) {
     data: { product },
   } = await response.json();
 
+  // 外部APIコールの実験
+  const externalApiResponse = await getExternalData()
+  const externalApiResponseAsStr = JSON.stringify(externalApiResponse)
+  console.log('externalApiResponseAsStr=', externalApiResponseAsStr)
+
   return {
     ...qrCode,
     productDeleted: !product?.title,
@@ -77,6 +83,7 @@ async function supplementQRCode(qrCode, graphql) {
     productAlt: product?.images?.nodes[0]?.altText,
     destinationUrl: getDestinationUrl(qrCode),
     image: await qrCodeImagePromise,
+    additional_key: externalApiResponseAsStr,
   };
 }
 
@@ -98,4 +105,20 @@ export function validateQRCode(data) {
   if (Object.keys(errors).length) {
     return errors;
   }
+}
+
+/**
+ * 外部APIコールの実験
+ *
+ * @returns
+ */
+async function getExternalData() {
+  console.log("-> getExternalData")
+  const response = await axios.get("https://httpbin.org/get", {
+    params: {
+      key: "value",
+    }
+  });
+  console.log("-> response.data=", response.data)
+  return response.data;
 }

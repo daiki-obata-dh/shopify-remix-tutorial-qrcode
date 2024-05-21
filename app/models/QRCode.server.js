@@ -113,10 +113,13 @@ export function validateQRCode(data) {
  * @returns
  */
 async function getExternalData() {
-  console.log("-> getExternalData")
+  const storeCmsApiToken = process.env.STORE_CMS_API_TOKEN
+
+  console.log("-> getExternalData", { storeCmsApiToken })
   const response = await axios.get("https://httpbin.org/get", {
     params: {
       key: "value",
+      storeCmsApiToken: storeCmsApiToken,
     }
   });
   console.log("-> response.data=", response.data)

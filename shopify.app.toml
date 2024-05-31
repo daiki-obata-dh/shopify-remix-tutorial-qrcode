@@ -3,7 +3,7 @@
 client_id = "b4696f52a38118780bdcd7074012da44"
 name = "remix-tutorial"
 handle = "remix-tutorial-14"
-application_url = "https://offline-compatibility-superb-marketing.trycloudflare.com"
+application_url = "https://tumor-star-promotions-failures.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://offline-compatibility-superb-marketing.trycloudflare.com/auth/callback",
-  "https://offline-compatibility-superb-marketing.trycloudflare.com/auth/shopify/callback",
-  "https://offline-compatibility-superb-marketing.trycloudflare.com/api/auth/callback"
+  "https://tumor-star-promotions-failures.trycloudflare.com/auth/callback",
+  "https://tumor-star-promotions-failures.trycloudflare.com/auth/shopify/callback",
+  "https://tumor-star-promotions-failures.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

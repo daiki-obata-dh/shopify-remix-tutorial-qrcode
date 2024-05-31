@@ -2,6 +2,7 @@ import qrcode from "qrcode";
 import invariant from "tiny-invariant";
 import db from "../db.server";
 import axios from "axios";
+import { getCoordinateList } from "./coordinate.server";
 
 export async function getQRCode(id, graphql) {
   const qrCode = await db.qRCode.findFirst({ where: { id } });
@@ -43,6 +44,9 @@ export function getDestinationUrl(qrCode) {
 }
 
 async function supplementQRCode(qrCode, graphql) {
+  // コーディネート一覧の取得
+  const coordinateList = await getCoordinateList()
+
   const qrCodeImagePromise = getQRCodeImage(qrCode.id);
 
   const response = await graphql(
@@ -83,7 +87,9 @@ async function supplementQRCode(qrCode, graphql) {
     productAlt: product?.images?.nodes[0]?.altText,
     destinationUrl: getDestinationUrl(qrCode),
     image: await qrCodeImagePromise,
-    additionalKey: externalApiResponseAsStr,
+    externalApiResponseAsStr: externalApiResponseAsStr,
+    // コーディネート一覧を、JSON文字列でViewに渡す
+    coordinateListResponseAsStr: JSON.stringify(coordinateList, null, "\t"),
   };
 }
 
@@ -115,13 +121,13 @@ export function validateQRCode(data) {
 async function getExternalData() {
   const storeCmsApiToken = process.env.STORE_CMS_API_TOKEN
 
-  console.log("-> getExternalData", { storeCmsApiToken })
+  // console.log("-> getExternalData", { storeCmsApiToken })
   const response = await axios.get("https://httpbin.org/get", {
     params: {
       key: "value",
       storeCmsApiTokenFromEnv: storeCmsApiToken,
     }
   });
-  console.log("-> response.data=", response.data)
+  // console.log("-> response.data=", response.data)
   return response.data;
 }

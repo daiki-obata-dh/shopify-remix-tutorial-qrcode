@@ -228,7 +228,21 @@ export default function QRCodeForm() {
                 </InlineStack>
                 <InlineStack align="space-between">
                   <Text as="span" variant="headingMd" fontWeight="normal">
-                    {qrCode.additionalKey}
+                    {qrCode.externalApiResponseAsStr}
+                  </Text>
+                </InlineStack>
+              </BlockStack>
+            </Card>
+            <Card>
+              <BlockStack gap="500">
+                <InlineStack align="space-between">
+                  <Text as={"h2"} variant="headingLg">
+                    OGNE コーディネート一覧APIレスポンス
+                  </Text>
+                </InlineStack>
+                <InlineStack align="space-between">
+                  <Text as="span" variant="headingMd" fontWeight="normal">
+                    {qrCode.coordinateListResponseAsStr}
                   </Text>
                 </InlineStack>
               </BlockStack>

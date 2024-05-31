@@ -237,7 +237,7 @@ export default function QRCodeForm() {
               <BlockStack gap="500">
                 <InlineStack align="space-between">
                   <Text as={"h2"} variant="headingLg">
-                    CoordinateList
+                    OGNE コーディネート一覧APIレスポンス
                   </Text>
                 </InlineStack>
                 <InlineStack align="space-between">

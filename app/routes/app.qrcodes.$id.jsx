@@ -228,21 +228,7 @@ export default function QRCodeForm() {
                 </InlineStack>
                 <InlineStack align="space-between">
                   <Text as="span" variant="headingMd" fontWeight="normal">
-                    {qrCode.externalApiResponseAsStr}
-                  </Text>
-                </InlineStack>
-              </BlockStack>
-            </Card>
-            <Card>
-              <BlockStack gap="500">
-                <InlineStack align="space-between">
-                  <Text as={"h2"} variant="headingLg">
-                    CoordinateList
-                  </Text>
-                </InlineStack>
-                <InlineStack align="space-between">
-                  <Text as="span" variant="headingMd" fontWeight="normal">
-                    {qrCode.coordinateListResponseAsStr}
+                    {qrCode.additionalKey}
                   </Text>
                 </InlineStack>
               </BlockStack>
